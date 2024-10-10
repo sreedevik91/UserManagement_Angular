@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-warning-subtle">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">User Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+            <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+
+            </ul> -->
+            <div class="float-right">
+                @if(!isAdmin){
+                <!-- <div class="float-end"> -->
+                <!-- <button [routerLink]="['userProfile']">Profile</button> -->
+                <!-- <a routerLink="userProfile" class="btn">Profile</a> -->
+                <app-button [btnClass]="'btn'" [btnText]="loggedUser? user:'Profile'"
+                    (onBtnClick)="userProfile()"></app-button>
+                <!-- </div> -->
+                }@else{
+                <app-button [btnClass]="'btn'" [btnText]="loggedUser"></app-button>
+                }
+                <!-- <select name="" id="">
+                @for(user of userList$ | async;track $index){
+                    <option [value]="user.username">{{user.username}}</option>
+                }
+            </select> -->
+                <app-button [btnClass]="'btn btn-danger m-2'" [btnText]="'Logout'" (onBtnClick)="logout()"></app-button>
+
+                <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+            </div>
+        <!-- </div> -->
+    </div>
+</nav>
+<!-- router outlet is added in the home component because this navbar is the first element and all others are its children -->
+<router-outlet></router-outlet>
